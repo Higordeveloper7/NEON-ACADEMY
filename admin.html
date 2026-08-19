@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel — NEON ACADEMY</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-shell">
+  <header class="admin-header">
+    <div><div class="brand">⚡ NEON ACADEMY</div><small>Painel de cursos</small></div>
+    <a href="Index.html" class="back">← Ver site</a>
+  </header>
+
+  <main class="admin-container">
+    <section id="loginBox" class="panel login-panel">
+      <h1>Entrar no painel</h1>
+      <p>Área administrativa para adicionar, editar e excluir cursos.</p>
+      <form id="loginForm">
+        <label>Senha<input id="adminPassword" type="password" placeholder="Digite a senha" required></label>
+        <button class="primary" type="submit">ENTRAR</button>
+        <div id="loginError" class="error"></div>
+      </form>
+      <small class="warning">⚠️ Este painel é para site estático. A senha no JavaScript não substitui uma autenticação de servidor.</small>
+    </section>
+
+    <section id="adminApp" hidden>
+      <div class="top-actions">
+        <div><h1>Gerenciar cursos</h1><p>Adicione, edite ou exclua os cards exibidos na página inicial.</p></div>
+        <button id="logoutBtn" class="ghost">Sair</button>
+      </div>
+
+      <div class="dashboard-grid">
+        <section class="panel">
+          <h2 id="formTitle">Adicionar curso</h2>
+          <form id="courseForm">
+            <input type="hidden" id="courseId">
+            <label>Nome do curso<input id="title" required placeholder="Ex.: Curso de Marketing"></label>
+            <label>Categoria<input id="category" placeholder="Ex.: NEGÓCIOS"></label>
+            <label>Descrição<textarea id="description" rows="4" required placeholder="Descrição curta do curso"></textarea></label>
+            <div class="two">
+              <label>Ícone/emoji<input id="icon" placeholder="📚"></label>
+              <label>Texto do botão<input id="buttonText" value="QUERO CONHECER"></label>
+            </div>
+            <label>Link do curso (Kiwify ou outro)<input id="link" type="url" placeholder="https://..."></label>
+            <label>URL da imagem <span class="optional">(opcional)</span><input id="image" type="url" placeholder="https://.../imagem.jpg"></label>
+            <label>Benefícios <span class="optional">(um por linha)</span><textarea id="features" rows="4" placeholder="Aulas práticas&#10;Material de apoio&#10;Acesso online"></textarea></label>
+            <div class="form-actions">
+              <button class="primary" type="submit" id="saveBtn">Adicionar curso</button>
+              <button class="ghost" type="button" id="cancelBtn" hidden>Cancelar edição</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="list-heading"><h2>Cursos cadastrados</h2><span id="totalBadge">0</span></div>
+          <div id="courseList" class="course-list"></div>
+          <div id="emptyList" class="empty">Nenhum curso cadastrado.</div>
+        </section>
+      </div>
+
+      <section class="panel tools">
+        <h2>Backup</h2>
+        <p>Exporte seus cursos antes de trocar de dispositivo ou navegador. Depois, importe o arquivo JSON.</p>
+        <div class="form-actions">
+          <button id="exportBtn" class="ghost" type="button">⬇ Exportar cursos</button>
+          <label class="file-button">⬆ Importar JSON<input id="importFile" type="file" accept=".json,application/json" hidden></label>
+          <button id="resetBtn" class="danger" type="button">Restaurar cursos padrão</button>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+<script src="admin.js"></script>
+</body>
+</html>
